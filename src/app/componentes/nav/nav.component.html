@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="tool">
+    <button mat-icon-button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button (click)="logout()" mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Sair</span>
+        </button>
+        <button routerLink="/usuarios/cadastrar" mat-menu-item>
+            <mat-icon>add</mat-icon>
+            <span>Novo Usuario</span>
+        </button>
+        <button routerLink="/papeis/cadastrar" mat-menu-item>
+            <mat-icon>add</mat-icon>
+            <span>Novo papel</span>
+        </button>
+
+
+    </mat-menu>
+    <span>Gerenciamento de usuarios</span>
+    <button *ngIf="number>=1" mat-icon-button mat-button (click)="enviarParaNotificacoes()">
+        <mat-icon *ngIf="number>=1" matBadge={{number}} matBadgeColor="warn" >home</mat-icon>
+
+    </button>
+
+    <span class="example-spacer"></span>
+    <p routerLink="/papeis" routerLinkActive="active">Papeis</p>
+    <p routerLink="/usuarios" routerLinkActive="active">Usuarios</p>
+
+    <p routerLink="/permissoes" routerLinkActive="active"> Permissões </p>
+
+</mat-toolbar>

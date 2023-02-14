@@ -1,0 +1,62 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+        
+        </div>
+    </div>
+
+   <div class="container-informacoes">
+    <h2>Usuarios do Sistema</h2>
+    <button mat-icon-button mat-button mat-raised-button color="primary" class="add-button" routerLink="/usuarios/cadastrar" >
+        <mat-icon>add</mat-icon>
+    </button>
+   </div>
+
+    <div class="example-table-container">
+
+        <table mat-table [dataSource]="data" class="example-table">
+            <!-- Number Column -->
+            <mat-text-column name="nome">Nome</mat-text-column>
+            <mat-text-column name="login">Login</mat-text-column>
+            <mat-text-column name="senha">Senha</mat-text-column>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let user">
+                    {{user.id}}
+                </td>
+            </ng-container>
+            <!-- <mat-text-column name="id">Id </mat-text-column> -->
+            <ng-container matColumnDef="opcoes">
+                <th mat-header-cell *matHeaderCellDef> Opções </th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon> expand_circle_down</mat-icon>
+
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="redirecionarParaEdicao(row)">
+                            <mat-icon>mode_edit</mat-icon>
+                            <span>Editar</span>
+                        </button>
+                        <button mat-menu-item (click)="redirecionarParaPermissoes(row)">
+                            <mat-icon>search</mat-icon>
+                            <span>Permisões</span>
+                        </button>
+                        <button mat-menu-item (click)="deletarUsuario(row)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Excluir</span>
+                        </button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [length]="usuarioPage? usuarioPage.totalElements: 5" 
+    [pageSize]="5"
+    (page)="pegaMudancaPaginacao($event)" >
+    </mat-paginator>
+</div>

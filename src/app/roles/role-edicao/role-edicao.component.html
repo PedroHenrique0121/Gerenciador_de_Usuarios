@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-card>
+      <div class="card">
+
+        <h2>Edicão de Papeis do Usuario</h2>
+  
+        <Form [formGroup]="formulario" class="example-form" #formDir="ngForm" (ngSubmit)="editar()">
+  
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Id: </mat-label>
+                <input type="text" matInput formControlName="id" [(ngModel)]="role.id"
+                  placeholder="">
+                
+              </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Descricao: </mat-label>
+            <input type="text" id="descricao" matInput formControlName="descricao" [(ngModel)]="role.descricao"
+              placeholder="Informe a descriçao do Papel do usuario...">
+            <mat-error *ngIf="descricao?.hasError('required')">
+              Nome is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+  
+  
+  
+          <div class="b">
+            <button mat-raised-button class="buttons" color="primary">Editar</button>
+            <button type="button" (click)="cancelar()" mat-raised-button class="buttons" color="danger">Cancelar</button>
+          </div>
+  
+  
+        </Form>
+  
+      </div>
+  
+  
+    </mat-card>
+  </div>

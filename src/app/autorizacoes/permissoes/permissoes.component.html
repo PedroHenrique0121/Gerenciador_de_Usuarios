@@ -1,0 +1,39 @@
+<mat-card>
+    <div class="card">
+
+        <form [formGroup]="formulario" #formDir="ngForm" class="card">
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Seleção de usuario</mat-label>
+                <input type="text" id="nome" formControlName="nome" placeholder="Pesquise Por um Usuario"
+                    (ngModelChange)="retornarUsuarioPorNome()" [(ngModel)]="nomeUsuario" formControlName="nome" matInput
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option>--</mat-option>
+                    <mat-option (onSelectionChange)="selecionarUsuario(u)" *ngFor="let u of usuarios" [value]="u.login">
+                        {{u.login}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+
+            <p > usuario escolhido: <strong>{{usuario.login}}</strong></p>
+            <span class="example-list-section">
+                <ul>
+                    <li *ngFor="let role of rolesApp ">
+                        <mat-checkbox class="example-margin" color="primary" [labelPosition]="'after'"
+                            [disabled]="disableChecks" (change)="setAll($event.checked,$event.source, role)"
+                            [value]="role.descricao" [checked]="verificarExistenciaDePermissao(role)">
+                            {{role.descricao}}
+                        </mat-checkbox>
+                    </li>
+                </ul>
+            </span>
+        </form>
+    </div>
+
+
+
+
+</mat-card>

@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-card>
+    <div class="card">
+      <h2>Cadastro de Usuarios</h2>
+      <Form [formGroup]="formulario" class="example-form" #formDir="ngForm" (ngSubmit)="cadastrar()">
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="login" [(ngModel)]="usuario.nome"
+            placeholder="Informe o nome do usuario...">
+          <mat-error *ngIf="nome?.hasError('required')">
+            Nome is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Login</mat-label>
+          <input type="text" matInput formControlName="login" [(ngModel)]="usuario.login"
+            placeholder="Informe o login do Usuario...">
+          <mat-error *ngIf="login?.hasError('required')">
+            Login is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" [(ngModel)]="usuario.senha">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="senha?.hasError('required')">
+            senha is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="b">
+          <button mat-raised-button class="buttons" color="primary">Cadastrar</button>
+          <button type="button" (click)="cancelar()" mat-raised-button class="buttons" color="danger">Cancelar</button>
+        </div>
+
+
+      </Form>
+
+    </div>
+
+
+  </mat-card>
+</div>

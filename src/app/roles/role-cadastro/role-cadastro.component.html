@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <div class="card">
+
+      <Form [formGroup]="formulario" class="example-form" #formDir="ngForm" (ngSubmit)="cadastrar()">
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Descricao: </mat-label>
+          <input type="text" matInput formControlName="descricao" [(ngModel)]="role.descricao"
+            placeholder="Informe a descriçao do Papel do usuario...">
+          <mat-error *ngIf="descricao?.hasError('required')">
+            Nome is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="b-container">
+          <button mat-raised-button class="buttons" color="primary">Cadastrar</button>
+          <button type="button" (click)="cancelar()" mat-raised-button class="buttons" color="danger">Cancelar</button>
+        </div>
+      </Form>
+    </div>
+
+
+  </mat-card>
+</div>

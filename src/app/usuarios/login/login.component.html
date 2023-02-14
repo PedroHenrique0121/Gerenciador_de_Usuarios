@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-card>
+    <div class="card">
+      <Form [formGroup]="formulario" class="example-form" #formDir="ngForm" (ngSubmit)="tentarLogar()">
+      
+        <mat-error *ngIf="!permissao">
+          <strong>Este usuario não tem permissão para acessar o sistema!</strong>
+        </mat-error>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Login</mat-label>
+          <input type="text" matInput formControlName="login" [(ngModel)]="usuario.login"
+            placeholder="Digite seu login...">
+          <mat-error *ngIf="login?.hasError('required')">
+            Login is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" [(ngModel)]="usuario.senha">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="senha?.hasError('required')">
+            senha is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="example-full-width" color="primary">Entrar</button>
+      </Form>
+    </div>
+  </mat-card>
+</div>

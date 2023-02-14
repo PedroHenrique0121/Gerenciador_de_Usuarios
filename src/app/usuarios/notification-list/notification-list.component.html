@@ -1,0 +1,21 @@
+<div class="container">
+    <mat-card>
+        <div class="card-cabecalho">
+            <h2>Cadastros Recentes</h2>
+            <div class="user-cabecalho">
+                <p>Nome do usuario</p>
+                <p>Horario</p>
+            </div>
+        </div>
+
+
+        <div class="card">
+
+
+            <div *ngFor="let usuario of usuarios" class="user">
+                <p>{{usuario.nome}}</p>
+                <p>{{ usuario.data.getHours().toString() + ":"+ usuario.data.getMinutes().toString()}}</p>
+            </div>
+        </div>
+    </mat-card>
+</div>

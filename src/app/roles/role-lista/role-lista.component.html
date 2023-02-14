@@ -1,0 +1,43 @@
+
+<mat-card>
+    <div class="card">
+
+        <div class="container-informacoes">
+            <h2 class="titulo">Papeis cadastrados no sistema</h2>
+            <button mat-icon-button mat-button mat-raised-button color="primary" class="add-button" routerLink="/papeis/cadastrar" >
+                <mat-icon>add</mat-icon>
+            </button>
+           </div>
+          
+           
+            <span class="example-list-section"> 
+                <ul>
+                    <li *ngFor="let role of rolesApp ">
+                       
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon> settings_suggest</mat-icon>
+    
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="enviaParaEdicao(role)" >
+                                <mat-icon>mode_edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+                            
+                            <button mat-menu-item (click)="excluir(role)" >
+                                <mat-icon>delete</mat-icon>
+                                <span>Excluir</span>
+                            </button>
+                        </mat-menu>  
+                        {{role.descricao}}
+                        
+                    </li>
+                </ul>
+            </span>
+        
+    </div>
+
+
+
+
+</mat-card>

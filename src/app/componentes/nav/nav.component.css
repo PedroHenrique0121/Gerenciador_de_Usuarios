@@ -1,0 +1,22 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-icon {
+    padding: 0 14px 0 0
+  }
+
+ .tool{
+
+    display: flex;
+    align-items: center;
+ }
+ p{
+    margin: 0 10px;
+    cursor: pointer;
+ }
+
+ .active{
+   color: rgb(189, 186, 186);
+   border-bottom: 1px solid rgb(235, 232, 232) ;
+ }

@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "9d5993fe-13d7-4d7a-983b-10330e2405a8"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -22,12 +25,17 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+             
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
+              
             ],
             "scripts": []
           },
@@ -71,7 +79,8 @@
               "browserTarget": "adms:build:production"
             },
             "development": {
-              "browserTarget": "adms:build:development"
+              "browserTarget": "adms:build:development",
+              "port": 4201
             }
           },
           "defaultConfiguration": "development"
@@ -80,6 +89,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "adms:build"
+           
           }
         },
         "test": {
@@ -94,6 +104,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
